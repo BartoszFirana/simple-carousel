@@ -22,13 +22,7 @@ let data = [
     }
 ]
 
-console.log(data);
-
 const dataLength = data.length - 1;
-
-let slide = 0;
-let leftPicture = data.length - 1;
-let rightPicture = 1;
 
 const galleryContainer = document.querySelector('.carousel');
 const btnPrev = document.querySelector('.carousel__button--prev');
