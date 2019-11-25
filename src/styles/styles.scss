@@ -58,20 +58,54 @@ label:active:after {
   width: 30px;
 }
 
+main {
+  overflow: hidden;
+  position: relative;
+  min-height: 590px;
+}
+
+.switch__container {
+  width: 560px;
+  padding: 20px;
+  margin: auto;
+  max-width: 100%;
+}
+
+.container {
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  bottom: 0;
+}
+
 .wrapper {
   width: 560px;
-  height: 500px;
+  height: 600px;
   margin: auto;
   overflow: hidden;
+  position: relative;
 }
 
 .carousel {
   display: flex;
   width: 100%;
+  position: absolute;
+  top: 50%;
 }
 
 .carousel__image {
   max-width: 190px;
   height: 412px;
-  padding-right: 8px;
+  transform: translateY(-50%);
+  -webkit-box-shadow: 0px 10px 22px 0px rgba(0, 0, 0, 0);
+  -moz-box-shadow: 0px 10px 22px 0px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 22px 0px rgba(0, 0, 0, 0);
+}
+
+.active {
+  transform: translateY(-50%) scale(1.2);
+  z-index: 1;
+  -webkit-box-shadow: 0px 10px 22px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 10px 22px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 10px 22px 0px rgba(0, 0, 0, 0.75);
 }
