@@ -21,35 +21,41 @@ let data = [
         src: image5,
     }
 ]
-
-const dataLength = data.length - 1;
-
 const galleryContainer = document.querySelector('.carousel');
 const btnPrev = document.querySelector('.carousel__button--prev');
 const btnNext = document.querySelector('.carousel__button--next');
 
-galleryContainer.innerHTML = `
-<img src="${data[0].src}" alt="" class="carousel__image">
-<img src="${data[1].src}" alt="" class="carousel__image active">
-<img src="${data[2].src}" alt="" class="carousel__image">
-`;
+setContent();
 
 btnPrev.addEventListener('click', () => {
     data.splice(0, 0, data[data.length - 1]);
     data.splice(data.length - 1, 1);
-    galleryContainer.innerHTML = `
-        <img src="${data[0].src}" alt="" class="carousel__image">
-        <img src="${data[1].src}" alt="" class="carousel__image active">
-        <img src="${data[2].src}" alt="" class="carousel__image">
-    `;
-})
+    setContent();
+});
 
 btnNext.addEventListener('click', () => {
-    data.splice(data.length - 1, 0, data[0]);
+    data.splice(data.length, 0, data[0]);
     data.splice(0, 1);
-    galleryContainer.innerHTML = `
+    setContent();
+});
+
+window.addEventListener('resize', setContent);
+
+function setContent() {
+
+    if (window.innerWidth < 700) {
+        galleryContainer.innerHTML = `
+    <img src="${data[0].src}" alt="" class="carousel__image">
+    <img src="${data[1].src}" alt="" class="carousel__image active">
+    <img src="${data[2].src}" alt="" class="carousel__image">
+`;
+    } else {
+        galleryContainer.innerHTML = `
+        <img src="${data[4].src}" alt="" class="carousel__image">
         <img src="${data[0].src}" alt="" class="carousel__image">
         <img src="${data[1].src}" alt="" class="carousel__image active">
         <img src="${data[2].src}" alt="" class="carousel__image">
+        <img src="${data[3].src}" alt="" class="carousel__image">
     `;
-})
+    }
+}
