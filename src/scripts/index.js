@@ -33,6 +33,8 @@ const lastPicture = data.length - 1;
 
 setContent();
 
+const image44 = document.querySelector('.image4'); // testowe działanie
+
 btnPrev.addEventListener('click', () => {
     data.splice(0, 0, data[lastPicture]);
     data.splice(data.length - 1, 1);
@@ -44,6 +46,13 @@ btnNext.addEventListener('click', () => {
     data.splice(0, 1);
     setContent();
 });
+
+image44.addEventListener('click', () => {
+    data.splice(data.length, 0, data[0]);
+    data.splice(0, 1);
+    setContent();
+    console.log("click");
+}); // testowe działanie
 
 window.addEventListener('resize', setContent);
 
