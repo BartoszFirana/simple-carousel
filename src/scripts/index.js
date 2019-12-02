@@ -12,9 +12,7 @@ const btns = document.querySelector('.carousel__button');
 
 const lastPicture = images.length - 1;
 
-setContent();
-
-window.addEventListener('resize', setContent);
+setContent(images);
 
 checkbox.addEventListener('click', () => {
     if (!checkbox.checked) {
@@ -33,44 +31,32 @@ btns.addEventListener('click', (event) => {
 })
 
 galleryContainer.addEventListener("click", (event) => {
-    if (event.target.id === "1") {
-        carouselTurnLeft()
-    } if (event.target.id === "3") {
-        carouselTurnRight()
-    } if (event.target.id === "0") {
-        carouselTurnTwiceLeft()
-    } if (event.target.id === "4") {
-        carouselTurnTwiceRight()
+    const imageId = event.target.id;
+    if (imageId !== "2") {
+        centerOnImage(imageId)
     }
 });
 
-function carouselTurnLeft() {
-    images.splice(0, 0, images[lastPicture]);
-    images.splice(images.length - 1, 1);
-    setContent();
+function centerOnImage(index) {
+    if (index === "0") {
+        images.splice(0, 0, images[lastPicture]);
+        images.splice(0, 0, images[lastPicture]);
+        images.splice(images.length - 2, 2);
+    } if (index === "1") {
+        images.splice(0, 0, images[lastPicture]);
+        images.splice(images.length - 1, 1);
+    } if (index === "3") {
+        images.splice(images.length, 0, images[0]);
+        images.splice(0, 1);
+    } if (index === "4") {
+        images.splice(images.length, 0, images[0]);
+        images.splice(images.length, 0, images[1]);
+        images.splice(0, 2);
+    }
+    setContent(images);
 }
 
-function carouselTurnRight() {
-    images.splice(images.length, 0, images[0]);
-    images.splice(0, 1);
-    setContent();
-}
-
-function carouselTurnTwiceLeft() {
-    images.splice(0, 0, images[lastPicture]);
-    images.splice(0, 0, images[lastPicture]);
-    images.splice(images.length - 2, 2);
-    setContent();
-}
-
-function carouselTurnTwiceRight() {
-    images.splice(images.length, 0, images[0]);
-    images.splice(images.length, 0, images[1]);
-    images.splice(0, 2);
-    setContent();
-}
-
-function setContent() {
+function setContent(images) {
     galleryContainer.innerHTML = images.map((image, index) => (`
             <img src="${image}" alt="" id=${index} class="${index === 2 ? "carousel__image active" : "carousel__image"}">
             `)).join(``)
