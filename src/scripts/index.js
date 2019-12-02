@@ -10,7 +10,7 @@ const galleryContainer = document.querySelector('.carousel');
 const checkbox = document.querySelector('.switch__input');
 const btns = document.querySelector('.carousel__button');
 
-const lastPicture = images.length - 1;
+const imagesLastIndex = images.length - 1;
 
 setContent(images);
 
@@ -23,9 +23,10 @@ checkbox.addEventListener('click', () => {
 });
 
 btns.addEventListener('click', (event) => {
-    if (event.target.classList.value === "carousel__button--prev") {
+    const targetClassName = event.target.classList.value;
+    if (targetClassName === "carousel__button--prev") {
         centerOnImage("1")
-    } if (event.target.classList.value === "carousel__button--next") {
+    } if (targetClassName === "carousel__button--next") {
         centerOnImage("3")
     }
 })
@@ -39,11 +40,11 @@ galleryContainer.addEventListener("click", (event) => {
 
 function centerOnImage(index) {
     if (index === "0") {
-        images.splice(0, 0, images[lastPicture]);
-        images.splice(0, 0, images[lastPicture]);
+        images.splice(0, 0, images[imagesLastIndex]);
+        images.splice(0, 0, images[imagesLastIndex]);
         images.splice(images.length - 2, 2);
     } if (index === "1") {
-        images.splice(0, 0, images[lastPicture]);
+        images.splice(0, 0, images[imagesLastIndex]);
         images.splice(images.length - 1, 1);
     } if (index === "3") {
         images.splice(images.length, 0, images[0]);
