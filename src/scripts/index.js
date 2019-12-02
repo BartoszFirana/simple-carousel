@@ -24,9 +24,9 @@ checkbox.addEventListener('click', () => {
 
 btns.addEventListener('click', (event) => {
     if (event.target.classList.value === "carousel__button--prev") {
-        carouselTurnLeft()
+        centerOnImage("1")
     } if (event.target.classList.value === "carousel__button--next") {
-        carouselTurnRight()
+        centerOnImage("3")
     }
 })
 
