@@ -107,13 +107,14 @@ main {
   border-radius: 10px;
   margin-left: 10px;
   margin-right: 10px;
+  transition-duration: 1s;
 }
 
 .active {
-  margin-left: 20px;
-  margin-right: 20px;
-  transform: scale(1.2);
   z-index: 1;
+  animation-name: scale;
+  animation-duration: .5s;
+  transform: scale(1.2);
 }
 
 .carousel__button {
@@ -150,4 +151,26 @@ main {
 .carousel__button--prev {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
+}
+
+.moveleft {
+  transform: translateX(210px);
+}
+
+.moveright {
+  transform: translateX(-210px);
+}
+
+.disappearing {
+  opacity: 0;
+}
+
+@keyframes scale {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.2);
+  }
 }

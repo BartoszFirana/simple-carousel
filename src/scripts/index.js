@@ -39,22 +39,39 @@ galleryContainer.addEventListener("click", (event) => {
 });
 
 function centerOnImage(index) {
-    if (index === "0") {
-        images.splice(0, 0, images[imagesLastIndex]);
-        images.splice(0, 0, images[imagesLastIndex]);
-        images.splice(images.length - 2, 2);
-    } if (index === "1") {
-        images.splice(0, 0, images[imagesLastIndex]);
-        images.splice(images.length - 1, 1);
-    } if (index === "3") {
-        images.splice(images.length, 0, images[0]);
-        images.splice(0, 1);
-    } if (index === "4") {
-        images.splice(images.length, 0, images[0]);
-        images.splice(images.length, 0, images[1]);
-        images.splice(0, 2);
+    moveEffect(index);
+    setTimeout(function () {
+        if (index === "0") {
+            images.splice(0, 0, images[imagesLastIndex]);
+            images.splice(0, 0, images[imagesLastIndex]);
+            images.splice(images.length - 2, 2);
+        } if (index === "1") {
+            images.splice(0, 0, images[imagesLastIndex]);
+            images.splice(images.length - 1, 1);
+        } if (index === "3") {
+            images.splice(images.length, 0, images[0]);
+            images.splice(0, 1);
+        } if (index === "4") {
+            images.splice(images.length, 0, images[0]);
+            images.splice(images.length, 0, images[1]);
+            images.splice(0, 2);
+        }
+        setContent(images);
+    }, 1000);
+}
+
+function moveEffect(index) {
+    const imgEl = document.querySelectorAll('.carousel__image');
+    const imgElLenght = imgEl.length;
+    for (let i = 0; i < imgElLenght; i++) {
+        if (index === "0" || index === "1") {
+            imgEl[i].classList.add("moveleft");
+            imgEl[4].classList.add("disappearing");
+        } if (index === "3" || index === "4") {
+            imgEl[i].classList.add("moveright")
+            imgEl[0].classList.add("disappearing");
+        }
     }
-    setContent(images);
 }
 
 function setContent(images) {
