@@ -23,19 +23,24 @@ checkbox.addEventListener('click', () => {
 });
 
 btns.addEventListener('click', (event) => {
-    const targetClassName = event.target.classList.value;
-    if (targetClassName === "carousel__button--prev") {
-        centerOnImage("1")
-    } if (targetClassName === "carousel__button--next") {
-        centerOnImage("3")
-    }
+    const imgElements = document.querySelectorAll('.carousel__image');
+    if (imgElements[0].style.transform === "") {
+        const targetClassName = event.target.classList.value;
+        if (targetClassName === "carousel__button--prev") {
+            centerOnImage("1")
+        } if (targetClassName === "carousel__button--next") {
+            centerOnImage("3")
+        }
+    } else return
 })
 
 galleryContainer.addEventListener("click", (event) => {
-    const imageId = event.target.id;
-    if (imageId !== "2") {
-        centerOnImage(imageId)
-    }
+    if (event.target.style.transform === "") {
+        const imageId = event.target.id;
+        if (imageId !== "2") {
+            centerOnImage(imageId)
+        }
+    } else return
 });
 
 function centerOnImage(index) {
