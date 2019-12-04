@@ -61,15 +61,25 @@ function centerOnImage(index) {
 }
 
 function moveEffect(index) {
-    const imgEl = document.querySelectorAll('.carousel__image');
-    const imgElLenght = imgEl.length;
-    for (let i = 0; i < imgElLenght; i++) {
-        if (index === "0" || index === "1") {
-            imgEl[i].classList.add("moveleft");
-            imgEl[4].classList.add("disappearing");
-        } if (index === "3" || index === "4") {
-            imgEl[i].classList.add("moveright")
-            imgEl[0].classList.add("disappearing");
+    const imgElements = document.querySelectorAll('.carousel__image');
+    const margins = 30;
+    const imgElementWidth = imgElements[0].offsetWidth + margins;
+    const imgElementsLenght = imgElements.length;
+    for (let i = 0; i < imgElementsLenght; i++) {
+        if (index === "0") {
+            imgElements[i].style.transform = `translateX(${imgElementWidth * 2}px)`;
+            imgElements[3].style.opacity = "0";
+            imgElements[4].style.opacity = "0";
+        } if (index === "1") {
+            imgElements[i].style.transform = `translateX(${imgElementWidth}px)`;
+            imgElements[4].style.opacity = "0";
+        } if (index === "3") {
+            imgElements[i].style.transform = `translateX(${"-" + imgElementWidth}px)`;
+            imgElements[0].style.opacity = "0";
+        } if (index === "4") {
+            imgElements[i].style.transform = `translateX(${"-" + imgElementWidth * 2}px)`;
+            imgElements[0].style.opacity = "0";
+            imgElements[1].style.opacity = "0";
         }
     }
 }

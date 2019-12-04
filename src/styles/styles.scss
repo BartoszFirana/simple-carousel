@@ -105,8 +105,8 @@ main {
   height: 412px;
   border: 1px solid gray;
   border-radius: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
   transition-duration: 1s;
 }
 
@@ -151,18 +151,6 @@ main {
 .carousel__button--prev {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
-}
-
-.moveleft {
-  transform: translateX(210px);
-}
-
-.moveright {
-  transform: translateX(-210px);
-}
-
-.disappearing {
-  opacity: 0;
 }
 
 @keyframes scale {
