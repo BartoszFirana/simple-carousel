@@ -47,11 +47,11 @@ body {
   transition: 0.3s;
 }
 
-.switch__input:checked+.switch__label {
+.switch__input:checked + .switch__label {
   background: #a63f00;
 }
 
-.switch__input:checked+.switch__label:after {
+.switch__input:checked + .switch__label:after {
   left: calc(100% - 8px);
   transform: translateX(-100%);
 }
@@ -108,13 +108,37 @@ main {
   margin-left: 15px;
   margin-right: 15px;
   transition-duration: 1s;
+  cursor: pointer;
 }
 
 .active {
-  z-index: 1;
+  z-index: 2;
   animation-name: scale;
-  animation-duration: .5s;
+  animation-duration: 0.5s;
   transform: scale(1.2);
+}
+
+.modal {
+  display: none;
+}
+
+.modal__background {
+  background: rgba(0, 0, 0, 0.8);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+}
+
+.modal__image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 10px;
+  transform: translate(-50%, -50%) scale(1.4);
+  animation-name: modal;
+  animation-duration: 0.5s;
 }
 
 .carousel__button {
@@ -153,6 +177,31 @@ main {
   -webkit-transform: rotate(135deg);
 }
 
+.carousel__marker {
+  display: flex;
+  width: 140px;
+  max-width: 98%;
+  margin: auto;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+
+.carousel__marker--point,
+.carousel__marker--wide {
+  background: #d4d4d4;
+  height: 20px;
+  border-radius: 60px;
+}
+
+.carousel__marker--wide {
+  width: 40px;
+}
+
+.carousel__marker--point {
+  width: 20px;
+}
+
 @keyframes scale {
   from {
     transform: scale(1);
@@ -160,5 +209,15 @@ main {
 
   to {
     transform: scale(1.2);
+  }
+}
+
+@keyframes modal {
+  from {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1.4);
   }
 }

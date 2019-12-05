@@ -9,6 +9,7 @@ const images = [image1, image2, image3, image4, image5];
 const galleryContainer = document.querySelector('.carousel');
 const checkbox = document.querySelector('.switch__input');
 const btns = document.querySelector('.carousel__button');
+const carouselMarkers = document.querySelector('.carousel__marker');
 
 const imagesLastIndex = images.length - 1;
 
@@ -31,16 +32,18 @@ btns.addEventListener('click', (event) => {
         } if (targetClassName === "carousel__button--next") {
             centerOnImage("3")
         }
-    } else return
+    }
 })
 
 galleryContainer.addEventListener("click", (event) => {
-    if (event.target.style.transform === "") {
+    if (!event.target.style.transform) {
         const imageId = event.target.id;
         if (imageId !== "2") {
             centerOnImage(imageId)
+        } if (imageId === "2") {
+            modalHandler(imageId);
         }
-    } else return
+    }
 });
 
 function centerOnImage(index) {
@@ -67,8 +70,8 @@ function centerOnImage(index) {
 
 function moveEffect(index) {
     const imgElements = document.querySelectorAll('.carousel__image');
-    const margins = 30;
-    const imgElementWidth = imgElements[0].offsetWidth + margins;
+    const margin = 30;
+    const imgElementWidth = imgElements[0].offsetWidth + margin;
     const imgElementsLenght = imgElements.length;
     for (let i = 0; i < imgElementsLenght; i++) {
         if (index === "0") {
@@ -87,6 +90,19 @@ function moveEffect(index) {
             imgElements[1].style.opacity = "0";
         }
     }
+}
+
+function modalHandler(imageId) {
+    const modal = document.querySelector(".modal");
+    modal.style.display = "inline";
+    modal.innerHTML = `
+        <div class="modal__background">
+            <img src=${images[imageId]} alt="" class="modal__image">
+        </div>
+    `;
+    modal.addEventListener("click", () => {
+        modal.style.display = "none";
+    })
 }
 
 function setContent(images) {

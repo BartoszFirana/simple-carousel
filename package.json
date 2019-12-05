@@ -21,5 +21,8 @@
   "devDependencies": {
     "cssnano": "^4.1.10",
     "sass": "^1.23.7"
+  },
+  "dependencies": {
+    "perf_hooks": "0.0.1"
   }
 }
