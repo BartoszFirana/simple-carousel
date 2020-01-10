@@ -94,7 +94,7 @@ function moveEffect(index) {
 
 function modalHandler(imageId) {
     const modal = document.querySelector(".modal");
-    modal.style.display = "inline";
+    modal.style.display = "block";
     modal.innerHTML = `
         <div class="modal__background">
             <img src=${images[imageId]} alt="" class="modal__image">
